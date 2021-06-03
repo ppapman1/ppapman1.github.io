@@ -30,11 +30,24 @@ a {
     color: black;
 }
 
+#header-links {
+    display: flex;
+    align-items: center;
+}
+
 #change-lang {
     padding-right: 30px;
 }
 
+#github {
+    padding-right: 30px;
+}
+
 .fas {
+    margin-right: 5px;
+}
+
+.fab {
     margin-right: 5px;
 }
 
@@ -122,5 +135,5 @@ a {
 
 .mod-more:hover {
     font-weight: bold;
-    transform: scale(1.0);
+    transform: scale(1.025);
 }
