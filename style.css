@@ -1,24 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 body {
     font-family: 'Noto Sans KR';
-    background: rgb(39, 39, 58);
+    background: #2C2C44;
     margin: 0px;
 }
 
 header {
     color: white;
-    background-color: rgb(23, 23, 32);
-    text-align: left;
+    background-color: rgb(44, 44, 68);
     padding-left: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 320px;
+    height: 70px;
 }
 
-article {
+main {
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    margin-left: 225px;
+    height: calc(100% - 70px);
+    background-color: #424261;
+    border-top-left-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 20%);
+}
+
+side {
+    height: 100%;
+    width: 225px;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-color: rgb(44, 44, 68);
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
 a {
@@ -51,21 +67,28 @@ a {
     margin-right: 5px;
 }
 
+.no-drag {
+    user-select: none;
+}
+
 .mod {
     width: calc(25% - 30px);
     background-color: rgb(233, 233, 233);
     border-radius: 5px;
     margin: 15px;
-    padding: 10px;
+    margin-right: 0px;
+    padding-top: 10px;
+    padding-bottom: 0px;
     padding-left: 15px;
     padding-right: 15px;
     height: 200px;
     min-width: 300px;
     position: relative;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
 }
 
 .mod-title {
-    background-color: #666675;
+    background-color: #767695;
     color: white;
     font-size: 1.5em;
     font-weight: bold;
@@ -107,7 +130,7 @@ a {
 
 .mod-footer {
     position: absolute;
-    bottom: 1em;
+    bottom: 10px;
     width: 92%;
 }
 
@@ -126,7 +149,7 @@ a {
     border-radius: 5px;
     text-align: center;
     width: 6em;
-    height: 46px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
