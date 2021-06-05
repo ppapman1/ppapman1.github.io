@@ -1,0 +1,50 @@
+/* Global styles are saved in this stylesheet */
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/* Default body */
+body {
+    font-family: 'Noto Sans KR';
+    background: rgb(39, 39, 58);
+    margin: 0px;
+}
+
+/* Hide Links */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Header element of this page */
+header {
+    color: white;
+    background-color: rgb(23, 23, 32);
+    text-align: left;
+    padding-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 320px;
+}
+
+/* Black text */
+.black {
+    color: black;
+}
+
+/* Links in the header */
+#header-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Change Language button */
+#change-lang {
+    padding-right: 30px;
+}
+
+/* Visit github repository button */
+#github {
+    padding-right: 30px;
+}
