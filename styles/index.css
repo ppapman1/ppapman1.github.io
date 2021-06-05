@@ -6,7 +6,7 @@
 /* Default body */
 body {
     font-family: 'Noto Sans KR';
-    background: rgb(39, 39, 58);
+    background: #2C2C44;
     margin: 0px;
 }
 
@@ -19,13 +19,12 @@ a {
 /* Header element of this page */
 header {
     color: white;
-    background-color: rgb(23, 23, 32);
-    text-align: left;
+    background-color: rgb(44, 44, 68);
     padding-left: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 320px;
+    height: 70px;
 }
 
 /* Black text */
