@@ -1,6 +1,8 @@
 /* Mod article styles are saved in this stylesheet */
 
+
 /* Each element wrapper in the modlist */
+
 main {
     display: flex;
     flex-wrap: wrap;
@@ -8,47 +10,28 @@ main {
     height: calc(100% - 70px);
     background-color: #424261;
     border-top-left-radius: 10px;
-    box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 20%);
+    box-shadow: 2px 2px 6px 0 rgb(0 0 0 / 20%);
 }
 
-/* A sidebar menu */
-side {
-    height: 100%;
-    width: 225px;
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    background-color: rgb(44, 44, 68);
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-/* fas icon */
-.fas {
-    margin-right: 5px;
-}
-
-/* fab icon */
-.fab {
-    margin-right: 5px;
-}
 
 /* Do not change cursor style and show selection */
+
 .no-drag {
     cursor: pointer;
     user-select: none;
 }
 
+
 /* Mod article styles */
+
 .mod {
     width: calc(25% - 30px);
     background-color: rgb(233, 233, 233);
     border-radius: 5px;
     margin: 15px;
-    margin-right: 0px;
+    margin-right: 0;
     padding-top: 10px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     padding-left: 15px;
     padding-right: 15px;
     height: 200px;
@@ -107,7 +90,7 @@ side {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    bottom: 0px;
+    bottom: 0;
     margin-top: 10px;
 }
 

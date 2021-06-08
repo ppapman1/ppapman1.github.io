@@ -1,49 +1,102 @@
 /* Global styles are saved in this stylesheet */
 
+
 /* Font */
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 /* Default body */
+
 body {
-    font-family: 'Noto Sans KR';
     background: #2C2C44;
-    margin: 0px;
+    margin: 0;
+    font-family: 'Noto Sans KR';
 }
 
-/* Hide Links */
+
+/* Hide Link Style */
+
 a {
     color: white;
     text-decoration: none;
 }
 
+
 /* Header element of this page */
+
 header {
+    height: 70px;
     color: white;
     background-color: rgb(44, 44, 68);
     padding-left: 30px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* A sidebar menu */
+
+side {
+    width: 185px;
+    height: calc(100% - 100px);
+    top: 0;
+    left: 0;
+    background-color: rgb(44, 44, 68);
+    padding: 20px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    position: fixed;
+    overflow-x: hidden;
 }
 
-/* Black text */
-.black {
-    color: black;
-}
-
-/* Links in the header */
-#header-links {
+#search-bar {
     display: flex;
     align-items: center;
 }
 
+#search {
+    height: 23px;
+    width: 155px;
+    border-radius: 22px;
+    border: 0;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.fa-search {
+    color: white;
+}
+
+
+/* fas, fab icon */
+
+.fas,
+.fab {
+    margin-right: 5px;
+}
+
+
+/* Black text */
+
+.black {
+    color: black;
+}
+
+
 /* Change Language button */
+
 #change-lang {
     padding-right: 30px;
 }
 
+
 /* Visit github repository button */
+
 #github {
     padding-right: 30px;
 }
