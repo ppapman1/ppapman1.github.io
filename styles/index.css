@@ -28,9 +28,8 @@ header {
     height: 70px;
     color: white;
     background-color: rgb(44, 44, 68);
-    padding-left: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     overflow: hidden;
 }
@@ -41,11 +40,10 @@ header {
 side {
     width: 185px;
     height: calc(100% - 100px);
-    top: 0;
+    bottom: 0;
     left: 0;
     background-color: rgb(44, 44, 68);
     padding: 20px;
-    padding-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,18 +52,33 @@ side {
     overflow-x: hidden;
 }
 
+hr {
+    border: 0;
+    background: gray;
+    height: 1px;
+}
+
+#title {
+    font-size: 2em;
+    white-space: pre;
+    margin-right: 15px;
+    margin-left: 20px;
+}
+
 #search-bar {
     display: flex;
     align-items: center;
+    width: calc(100% - 170px);
 }
 
 #search {
-    height: 23px;
-    width: 155px;
+    height: 45px;
     border-radius: 22px;
     border: 0;
-    padding: 5px;
-    margin-right: 10px;
+    padding: 10px;
+    font-size: 1.25em;
+    margin-right: 20px;
+    width: 100%;
 }
 
 .fa-search {

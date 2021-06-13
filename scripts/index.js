@@ -6,6 +6,23 @@ $(document).ready(function() {
     });
 });
 
+function modSearch() {
+    input = document.getElementById('search');
+    filter = input.value.toUpperCase();
+    modArticles = document.getElementById("articles");
+    modList = modArticles.getElementsByClassName('mod');
+
+    for (i = 0; i < modList.length; i++) {
+        modTitle = modList[i].getElementsByClassName("mod-name")[0];
+        txtValue = modTitle.innerHTML;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            modList[i].style.display = "";
+        } else {
+            modList[i].style.display = "none";
+        }
+    }
+}
 
 // __________________ NOT IMPLEMENTED YET __________________ // 
 
