@@ -61,9 +61,8 @@ hr {
 #title {
     font-size: 2em;
     white-space: pre;
-    margin-right: 15px;
+    margin-right: 90px;
     margin-left: 20px;
-    visibility: hidden;
 }
 
 #search-bar {

@@ -12,13 +12,14 @@ main {
     border-top-left-radius: 10px;
     box-shadow: 2px 2px 6px 0 rgb(0 0 0 / 20%);
     align-content: flex-start;
+    overflow: hidden;
 }
 
 
 /* Do not change cursor style and show selection */
 
 .no-drag {
-    cursor: pointer;
+    cursor: default;
     user-select: none;
 }
 
@@ -26,7 +27,7 @@ main {
 /* Mod article styles */
 
 .mod {
-    width: calc(25% - 30px);
+    width: calc(31.5% - 30px);
     background-color: rgb(233, 233, 233);
     border-radius: 5px;
     margin: 15px;
@@ -36,7 +37,7 @@ main {
     padding-left: 15px;
     padding-right: 15px;
     height: 200px;
-    min-width: 300px;
+    min-width: 279px;
     position: relative;
     transition: 0.2s;
 }

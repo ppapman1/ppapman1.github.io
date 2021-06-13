@@ -6,7 +6,7 @@ $(document).ready(function() {
         swal({
             icon: 'error',
             title: '잠시만요!',
-            text: '아마 모바일 기기로 접속한 것 같아요. 데스크탑 버전의 A Dance of Fire and Ice에만 모드를 적용할 수 있어요.',
+            text: '아마 모바일 기기로 접속한 것 같아요. 데스크톱 버전의 A Dance of Fire and Ice에만 모드를 적용할 수 있어요.',
             button: false,
             closeOnClickOutside: false
         });

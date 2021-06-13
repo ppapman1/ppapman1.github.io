@@ -1,2 +1,4 @@
-참고 : 
-github.io는 html, css, js 이외의 파일은 지원하지 않아요. ppapman1.github.io에선 프론트엔드만 볼 수 있어요.
+# A Dance of Fire and Ice Mods
+**[이곳을 눌러 바로 가기](https://ppapman1.github.io/)**
+
+이 사이트는 아직 작업 중에 있습니다! 만약 기여하고 싶다면 Pull Request로 올려주시면 확인해보겠습니다.
