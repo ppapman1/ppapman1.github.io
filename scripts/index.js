@@ -1,11 +1,24 @@
 $(document).ready(function() {
-    Swal.fire({
-        icon: 'info',
-        title: '잠시만요!',
-        text: '이 사이트는 아직 어느 기능도 지원하지 않는 완성되지 않은 상태예요. '
-    });
+    // When Connected to a Mobile Device
+    if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.body.innerHTML = '';
+
+        Swal.fire({
+            icon: 'error',
+            title: '잠시만요!',
+            text: '아마 모바일 기기로 접속한 것 같아요. 데스크탑 버전의 A Dance of Fire and Ice에만 모드를 적용할 수 있어요.'
+        });
+
+    } else {
+        Swal.fire({
+            icon: 'info',
+            title: '잠시만요!',
+            text: '이 사이트는 아직 어느 기능도 지원하지 않는 완성되지 않은 상태예요.'
+        });
+    }
 });
 
+// Mod Search
 function modSearch() {
     input = document.getElementById('search');
     filter = input.value.toUpperCase();
