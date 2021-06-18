@@ -47,7 +47,7 @@ side {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     position: fixed;
     overflow-x: hidden;
 }
@@ -79,6 +79,26 @@ hr {
     font-size: 1.25em;
     margin-right: 20px;
     width: 100%;
+    min-width: 315px;
+}
+
+.searched {
+    background-color: rgba(26, 10, 85, 0.5);
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.white {
+    color: white;
+}
+
+#search-mode {
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .fa-search {

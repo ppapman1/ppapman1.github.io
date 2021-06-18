@@ -24,21 +24,75 @@ $(document).ready(function() {
 function modSearch() {
     input = document.getElementById('search');
     filter = input.value.toUpperCase();
+
     modArticles = document.getElementById("articles");
     modList = modArticles.getElementsByClassName('mod');
 
-    for (i = 0; i < modList.length; i++) {
-        modTitle = modList[i].getElementsByClassName("mod-name")[0];
-        txtValue = modTitle.innerHTML;
+    // If Search Mode is Find by Mod Title
+    if ($('#title-mode')[0].checked) {
+        for (i = 0; i < modList.length; i++) {
+            let modFeature = modList[i].getElementsByClassName("mod-feature")[0];
+            let modTitle = modList[i].getElementsByClassName("mod-name")[0];
+            let txtValue = modTitle.innerText;
 
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            modList[i].style.display = "";
-        } else {
-            modList[i].style.display = "none";
+            modFeature.innerHTML = modFeature.innerText;
+
+            if (input.value === "") {
+                modTitle.innerHTML = txtValue;
+                modList[i].style.display = "";
+            } else if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                let startPosition = txtValue.toUpperCase().indexOf(filter);
+                let endPosition = txtValue.toUpperCase().indexOf(filter) + input.value.length;
+
+                let searched = txtValue.substring(startPosition, endPosition);
+                let left = txtValue.substring(0, startPosition);
+                let right = txtValue.substring(endPosition, txtValue.length);
+
+                modTitle.innerHTML = `${left}<span class="searched">${searched}</span>${right}`;
+
+                modList[i].style.display = "";
+            } else {
+                modList[i].style.display = "none";
+            }
+        }
+        // If Search Mode is Find by Mod Feature
+    } else {
+        for (i = 0; i < modList.length; i++) {
+            let modFeature = modList[i].getElementsByClassName("mod-feature")[0];
+            let modTitle = modList[i].getElementsByClassName("mod-name")[0];
+            let txtValue = modFeature.innerText;
+
+            modTitle.innerHTML = modTitle.innerText;
+
+            if (input.value === "") {
+                modFeature.innerHTML = txtValue;
+                modList[i].style.display = "";
+            } else if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                let startPosition = txtValue.toUpperCase().indexOf(filter);
+                let endPosition = txtValue.toUpperCase().indexOf(filter) + input.value.length;
+
+                let searched = txtValue.substring(startPosition, endPosition);
+                let left = txtValue.substring(0, startPosition);
+                let right = txtValue.substring(endPosition, txtValue.length);
+
+                modFeature.innerHTML = `${left}<span class="searched white">${searched}</span>${right}`;
+
+                modList[i].style.display = "";
+            } else {
+                modList[i].style.display = "none";
+            }
         }
     }
 }
 
+function changePlaceholder() {
+    searchBar = document.getElementById("search")
+    if ($('#title-mode')[0].checked) {
+        searchBar.placeholder = '찾고픈 모드의 이름을 검색해보세요';
+    } else {
+        searchBar.placeholder = '찾고픈 모드의 기능을 검색해보세요';
+    }
+}
 // __________________ NOT IMPLEMENTED YET __________________ // 
 
 // const utils = {
