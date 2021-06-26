@@ -105,12 +105,7 @@ hr {
 }
 
 
-/* Links (in sidebar) */
-
-
-/* #links {
-    display: flex;
-} */
+/* Buttons (in sidebar) */
 
 .circle {
     width: 170px;
@@ -131,6 +126,12 @@ hr {
     background-color: rgba(255, 255, 255);
     color: #2C2C44;
 }
+
+#button-hr {
+    background: rgba(255, 255, 255, 0.432);
+    margin-block-start: calc(0.5em + 3px)
+}
+
 /* FontAwsome Icons */
 
 .fas,

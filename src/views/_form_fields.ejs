@@ -1,0 +1,55 @@
+<div class="form-group">
+    <label for="name">모드 이름</label>
+    <input required type="text" name="name" id="name">
+</div>
+
+<div class="form-group">
+    <label for="download">모드 다운로드 링크</label>
+    <input required type="text" name="download" id="download">
+</div>
+
+<div class="form-group">
+    <label for="repository">모드 리포지토리 링크 (선택)</label>
+    <input type="text" name="repository" id="repository">
+</div>
+
+<div class="form-group">
+    <label for="authorname">제작자 이름</label>
+    <input required type="text" name="authorname" id="authorname" value="<%= // TODO %>">
+</div>
+
+<div class="form-group">
+    <label for="version">모드 버전</label>
+    <input required type="text" name="version" id="version">
+</div>
+
+<div class="form-group">
+    <label for="breiffeature">모드 기능 (간략하게)</label>
+    <input required type="text" name="breiffeature" id="breiffeature" maxlength="54"></input>
+</div>
+
+<div class="form-group">
+    <label for="allfeature">모드 기능 (자세하게)</label>
+    <textarea required type="text" name="allfeature" id="allfeature"></textarea>
+</div>
+
+<div class="form-group">
+    <label for="dependencymods">필요 모드 (,로 구분) (선택)</label>
+    <input type="text" name="dependencymods" id="dependencymods"></input>
+</div>
+
+<div class="form-group">
+    <label for="category">모드 카테고리</label>
+    <select name="category" id="category">
+        <option>종합</option>
+        <option>레벨 에디터</option>
+        <option>게임 플레이</option>
+        <option>텍스트 표시·수정</option>
+        <option>문제 수정·개선(최적화)</option>
+        <option>행성 모양 바꾸기</option>
+        <option>모드 라이브러리</option>
+        <option>기타</option>
+    </select>
+</div>
+
+<button type="submit">저장</button>

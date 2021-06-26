@@ -11,16 +11,8 @@ $(document).ready(function() {
             closeOnClickOutside: false
         });
 
-    } else {
-        if (!(document.cookie === 'isAlreadyOK=true')) {
-            swal({
-                icon: 'info',
-                title: '잠시만요!',
-                text: '이 사이트는 아직 어느 기능도 지원하지 않는 완성되지 않은 상태예요.'
-            });
-            document.cookie = 'isAlreadyOK=true';
-        }
     }
+
     if ($('#username')[0]) {
         window.discordName = $('#username')[0].innerText;
     }

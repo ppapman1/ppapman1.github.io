@@ -8,7 +8,7 @@ router.get('/redirect', passport.authenticate('discord', {
     successRedirect: '/'
 }));
 
-router.get('/end', (req, res) => {
+router.get('/revoke', (req, res) => {
     req.session.destroy();
     res.redirect('/mods');
 })

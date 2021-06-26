@@ -21,11 +21,12 @@ passport.use(new DiscordStrategy({
 }, async(accessToken, refreshToken, profile, done) => {
     try {
         const user = await DiscordUser.findOne({ discordId: profile.id });
+
+        // TODO NEED CHANGE THIS
         let isInModsGuild = false;
-        console.log(user);
+        let isDeveloper = true;
 
         for (let i = 0; i < profile.guilds.length; i++) {
-
             if (profile.guilds[i].id == 783482345373040650) {
                 isInModsGuild = true;
             }
@@ -33,20 +34,22 @@ passport.use(new DiscordStrategy({
         // let isDeveloper
 
         if (user) {
-            await DiscordUser.findOneAndUpdate({ discordId: profile.id }, {isInModsGuild: isInModsGuild}, function(err, result) {
-                if (!err) {
-                    console.log(result);
-                    done(null, user);
-                } else {
-                    done(err, null);
-                }
-            });
+            await DiscordUser.findOneAndUpdate(
+                { discordId: profile.id }, { isInModsGuild: isInModsGuild, isDeveloper: isDeveloper }, (err, result) => {
+                    if (!err) {
+                        console.log(result);
+                        done(null, user);
+                    } else {
+                        done(err, null);
+                    }}
+            );
             
         } else {
             const newUser = await DiscordUser.create({
                 discordId: profile.id,
                 username: profile.username,
-                isInModsGuild: isInModsGuild
+                isInModsGuild: isInModsGuild,
+                isDeveloper: isDeveloper
             });
             const saveUser = await newUser.save();
             done(null, saveUser);

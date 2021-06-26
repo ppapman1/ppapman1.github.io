@@ -6,12 +6,12 @@ const PORT = process.env.PORT || 3001;
 const session = require('express-session');
 const passport = require('passport');
 const discordStrategy = require('./strategies/discordStrategy');
-const db = require('./database/database');
+const db = require('./database/authDB');
 const path = require('path');
 
 // Route
 const authRoute = require('./routes/auth');
-const settingPageRoute = require('./routes/modsPage');
+const modsPageRoute = require('./routes/modsPage');
 
 // DB
 db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err));
@@ -28,13 +28,15 @@ app.use(session({
 // Set
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
 
+// Use
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRoute);
-app.use('/mods', settingPageRoute);
+app.use('/mods', modsPageRoute);
 
 // Redirect from / to /mods (bcz i dont made "home" page yet)
 app.get('/', (req, res) => {
