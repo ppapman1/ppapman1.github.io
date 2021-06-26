@@ -1,0 +1,32 @@
+{
+    "name": "adofai-mods",
+    "version": "0.0.1",
+    "description": "This project is a site where you can download or upload the mode of A Dance of Fire and Ice.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon -L ./src/app.js",
+        "start": "node ./src/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ppapman1/ppapman1.github.io.git"
+    },
+    "author": "ppapman",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ppapman1/ppapman1.github.io/issues"
+    },
+    "homepage": "https://github.com/ppapman1/ppapman1.github.io#readme",
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "mongoose": "^5.12.14",
+        "node-fetch": "^2.6.1",
+        "nodemon": "^2.0.7",
+        "passport": "^0.4.1",
+        "passport-discord": "^0.1.4"
+    }
+}

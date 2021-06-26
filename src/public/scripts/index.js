@@ -18,6 +18,7 @@ $(document).ready(function() {
             text: '이 사이트는 아직 어느 기능도 지원하지 않는 완성되지 않은 상태예요.'
         });
     }
+
 });
 
 // Mod Search
