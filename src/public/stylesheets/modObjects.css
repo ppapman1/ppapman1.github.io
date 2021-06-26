@@ -61,6 +61,8 @@ main {
     padding-bottom: 10px;
     padding-left: 18px;
     width: calc(300px - 54px);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mod-download {

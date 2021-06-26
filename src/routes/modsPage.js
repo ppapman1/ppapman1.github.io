@@ -13,7 +13,7 @@ function isAuthorized(req, res, next) {
 
 router.get('/', (req, res) => {
     res.render('modsPage', {
-        isAuthorized: !(req.user == undefined),
+        isAuthorized: req.user,
         user: req.user
     });
 });

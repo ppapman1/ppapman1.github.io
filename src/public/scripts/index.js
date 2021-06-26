@@ -12,13 +12,18 @@ $(document).ready(function() {
         });
 
     } else {
-        swal({
-            icon: 'info',
-            title: '잠시만요!',
-            text: '이 사이트는 아직 어느 기능도 지원하지 않는 완성되지 않은 상태예요.'
-        });
+        if (!(document.cookie === 'isAlreadyOK=true')) {
+            swal({
+                icon: 'info',
+                title: '잠시만요!',
+                text: '이 사이트는 아직 어느 기능도 지원하지 않는 완성되지 않은 상태예요.'
+            });
+            document.cookie = 'isAlreadyOK=true';
+        }
     }
-
+    if ($('#username')[0]) {
+        window.discordName = $('#username')[0].innerText;
+    }
 });
 
 // Mod Search
@@ -93,6 +98,14 @@ function changePlaceholder() {
     } else {
         searchBar.placeholder = '찾고픈 모드의 기능을 검색해보세요';
     }
+}
+
+function logoutButtonOver() {
+    $('#username')[0].innerText = '로그아웃 하기';
+}
+
+function logoutButtonOut() {
+    $('#username')[0].innerText = window.discordName;
 }
 // __________________ NOT IMPLEMENTED YET __________________ // 
 

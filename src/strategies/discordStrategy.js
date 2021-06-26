@@ -20,14 +20,33 @@ passport.use(new DiscordStrategy({
     scope: ['identify', 'guilds']
 }, async(accessToken, refreshToken, profile, done) => {
     try {
-        const user = await DiscordUser.findOne({ discordId: profile.id })
+        const user = await DiscordUser.findOne({ discordId: profile.id });
+        let isInModsGuild = false;
+        console.log(user);
+
+        for (let i = 0; i < profile.guilds.length; i++) {
+
+            if (profile.guilds[i].id == 783482345373040650) {
+                isInModsGuild = true;
+            }
+        }
+        // let isDeveloper
 
         if (user) {
-            done(null, user);
+            await DiscordUser.findOneAndUpdate({ discordId: profile.id }, {isInModsGuild: isInModsGuild}, function(err, result) {
+                if (!err) {
+                    console.log(result);
+                    done(null, user);
+                } else {
+                    done(err, null);
+                }
+            });
+            
         } else {
             const newUser = await DiscordUser.create({
                 discordId: profile.id,
-                username: profile.username
+                username: profile.username,
+                isInModsGuild: isInModsGuild
             });
             const saveUser = await newUser.save();
             done(null, saveUser);
@@ -37,11 +56,4 @@ passport.use(new DiscordStrategy({
         done(err, null);
     }
 
-    // const guilds = profile.guilds;
-
-    // for (var i = 0; i < guilds.length; i++) {
-    //     if (guilds[i].id === '783482345373040650') {
-    //         console.log('얼불춤 모딩 디스코드에 참여해 있어요.')
-    //     }
-    // }
 }));

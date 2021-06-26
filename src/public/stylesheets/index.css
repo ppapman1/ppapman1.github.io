@@ -96,7 +96,7 @@ hr {
 }
 
 
-/* Search Mode (in sidebar) */
+/* Search Mode Buttons (in sidebar) */
 
 #search-mode {
     color: white;
@@ -105,6 +105,32 @@ hr {
 }
 
 
+/* Links (in sidebar) */
+
+
+/* #links {
+    display: flex;
+} */
+
+.circle {
+    width: 170px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 10em;
+    border: 1px solid white;
+    margin-top: 10px;
+    transition: 0.2s;
+    overflow: hidden;
+    padding-left: 15px;
+    white-space:nowrap;
+}
+
+.circle:hover {
+    background-color: rgba(255, 255, 255);
+    color: #2C2C44;
+}
 /* FontAwsome Icons */
 
 .fas,
@@ -131,12 +157,5 @@ hr {
 /* Change Language button */
 
 #change-lang {
-    padding-right: 30px;
-}
-
-
-/* Visit github repository button */
-
-#github {
     padding-right: 30px;
 }

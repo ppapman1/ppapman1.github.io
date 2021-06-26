@@ -50,19 +50,26 @@
             </div>
 
             <div id="links">
+                <!-- Github Repository -->
                 <a href="https://github.com/ppapman1/ppapman1.github.io" target='_blank' id='github'>
-                    <i class="fab fa-github"></i> Github 리포지토리
+                    <div class="circle"><i class="fab fa-github fa-lg"></i>GitHub 리포지토리</div>
                 </a>
 
-                <!-- Sorry My linter is troll  -->
+                <!-- Discord OAuth2(login) -->
                 <% if (!isAuthorized) { %>
-                    <a href="../auth" id='discord-login'>
-                        <i class="fab fa-discord"></i> Discord로 로그인하기</a>
-                    <% } else { %>
-                        <span class="white"><i class="fas fa-check-square"></i> Discord로 로그인 됨</span>
-                        <% } %>
-
-
+                    <a href="../auth" class='discord-login'>
+                        <div class="circle">
+                            <i class="fas fa-sign-in-alt"></i>Discord로 로그인
+                        </div>
+                    </a>
+                <% } else { %>
+                    <a href="../auth/end" class='discord-login' onmouseover="logoutButtonOver()" onmouseout="logoutButtonOut()">
+                        <div class="circle" id='logined'>
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span id='username'><%= user.username %></span>
+                        </div>
+                    </a>
+                <% } %>
             </div>
 
         </side>
