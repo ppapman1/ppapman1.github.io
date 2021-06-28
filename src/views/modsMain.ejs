@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html lang="ko">
-
     <head>
         <!-- Metadata -->
         <meta charset="UTF-8">
@@ -12,8 +12,11 @@
 
         <title>A Dance of Fire and Ice Mods</title>
 
+        <!-- Icon -->
+        <link rel="icon" href="https://cdn.discordapp.com/icons/783482345373040650/fd95f05ba149fd271a405d7e126224f6.png?size=256">
+
         <!-- Custom Stylesheets -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/modObjects.css">
 
         <!-- Scripts -->
@@ -21,7 +24,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/af07626cc9.js" crossorigin="anonymous"></script>
 
-        <script src="scripts/index.js"></script>
+        <script src="scripts/modsMain.js"></script>
     </head>
 
     <body>
@@ -57,7 +60,7 @@
 
                 <!-- Mod Manage -->
                 <% if (isAuthorized) if (user.isDeveloper) { %>
-                    <a href="/mods/manage" class='manage-button'>
+                    <a href="/mods/manage" id='manage-button'>
                         <div class="circle">
                             <i class="fas fa-sliders-h"></i>
                             모드 추가·관리하기
@@ -65,11 +68,11 @@
                     </a>
                 <% } %>
 
-                <hr id='button-hr'>
+                <hr id='side-hr'>
 
                 <!-- Discord OAuth2(login) -->
                 <% if (!isAuthorized) { %>
-                    <a href="../auth" class='discord-login'>
+                    <a href="../auth" id='discord-login'>
                         <div class="circle">
                             <i class="fas fa-sign-in-alt "></i>Discord로 로그인
                         </div>
@@ -92,7 +95,7 @@
         <!-- List of articles -->
         <main id="articles">
             <% articles.forEach(article => { %>
-                <article class="mod" id="mod-article-a4ead8cfe3d24a6aa284aca6ab0b5000">
+                <article class="mod" id="<%= article.id %>">
                     <div class="mod-title">
                         <a href="#">
                             <div class="mod-name"><%= article.name %></div>

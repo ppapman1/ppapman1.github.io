@@ -11,6 +11,8 @@ const ModSchema = new mongoose.Schema({
     allFeatrues: { type: String, require: true },
     dependencyMods: { type: String, require: false, default: [] },
     category: { type: String, require: true }
+}, {
+    timestamps: { updatedAt: 'updatedAt' }
 });
 
 const ModArticle = module.exports = mongoose.model('Mod', ModSchema);

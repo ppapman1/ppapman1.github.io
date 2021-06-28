@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <!-- Metadata -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta content="A Dance of Fire and Ice Mods" property="og:title">
+        <meta content="https://ppapman1.github.io/" property="og:url">
+        <meta content="#4A71B5" data-react-helmet="true" name="theme-color">
+
+        <title>A Dance of Fire and Ice Mods</title>
+
+        <!-- Icon -->
+        <link rel="icon" href="https://cdn.discordapp.com/icons/783482345373040650/fd95f05ba149fd271a405d7e126224f6.png?size=256">
+
+        <!-- Custom Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+        <link rel="stylesheet" type="text/css" href="../stylesheets/manage.css">
+
+        <!-- Scripts -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/af07626cc9.js" crossorigin="anonymous"></script>
+
+        <script src="../scripts/manageMain.js"></script>
+    </head>
+
+    <body>
+        <!-- Header to display on top -->
+        <header class="no-drag">
+            <h1 id='title'><i class="fas fa-cube fa-1x" aria-hidden="true"></i>Mods</h1>
+
+            <!-- Search bar -->
+            <div id="search-bar">
+                <input type="search" id="search" onkeyup="modSearch()" placeholder="찾고픈 모드의 이름을 검색해보세요">
+            </div>
+        </header>
+
+        <!-- Side Bar -->
+        <side>
+            <div id="side-header">
+                <div id="profile">
+                    <!-- Avatar -->
+                    <% if (user.avatar === null) { %>
+                        <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="당신의 디스코드 아바타" id="avatar">
+                    <% } else { %>
+                        <img src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>.png" alt="당신의 디스코드 아바타" id="avatar">
+                    <% } %>
+
+                    <!-- Name/ID -->
+                    <span id="username"><%= user.username %></span>
+                    <span id="discord-id"><%= user.discordId %></span>
+                </div>
+
+                <details>
+                    <summary>통계 보기</summary>
+                    <div id="mods-status">
+                        당신의 모드 개수
+                        <span id="mod-amount">총 <%= mods.length %> 개</span>
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- Buttons (in sidebar) -->
+            <div id="buttons">
+                <!-- Github Repository -->
+                <a href="https://github.com/ppapman1/ppapman1.github.io" target='_blank' id='github'>
+                    <div class="circle"><i class="fab fa-github fa-lg"></i>GitHub 리포지토리</div>
+                </a>
+
+                <hr class='side-hr'>
+
+                <!-- Go back -->
+                <a href="/mods" id='go-back'>
+                    <div class="circle"><i class="fas fa-undo-alt"></i>뒤로 가기</div>
+                </a>
+            </div>
+        </side>
+
+        <!-- List of articles -->
+        <main id="articles">
+            <% mods.forEach(mod => { %>
+                <article class="mod" id="<%= mod.id %>">
+                    <a href="#">
+                        <div class="article-title">
+                            <div class="mod-title"><%= mod.name %></div>
+                            <div class="mod-version">v<%= mod.version %></div>
+                        </div>
+                    </a>
+
+                    <div class="article-buttons">
+                        <div class="cursor-pointer"><i class="far fa-edit fa-2x"></i></div>
+                        <div class="cursor-pointer mod-delete"><i class="far fa-trash-alt fa-2x"></i></div>
+                    </div>
+                </article>
+            <% }) %>
+
+            <footer id="add-mod-section">
+                <div id="add-mod">
+                    <div id="add-title" onclick="openAddModSection()">모드 추가하기</div>
+                    <form action="/mods/manage/add" method="POST" id="add-mod-form" class="hide">
+                        <%- include('_form_fields') %>
+                    </form>
+                </a>
+            </footer>
+        </main>
+    </body>
+</html>

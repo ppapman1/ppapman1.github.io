@@ -1,26 +1,31 @@
-<div class="form-group">
-    <label for="name">모드 이름</label>
-    <input required type="text" name="name" id="name">
+<div id="form-align">
+    <div class="form-group">
+        <label for="name">모드 이름</label>
+        <input required type="text" name="name" id="name">
+    </div>
+    
+    <!-- TODO 정규표현식 -->
+    <div class="form-group">
+        <label for="version">모드 버전</label>
+        <input required type="text" name="version" id="version">
+    </div>
+
+    <div class="form-group no-form-margin">
+        <label for="authorname">제작자 이름</label>
+        <input required type="text" name="authorname" id="authorname" value="<%= user.username %>">
+    </div>
 </div>
 
-<div class="form-group">
-    <label for="download">모드 다운로드 링크</label>
-    <input required type="text" name="download" id="download">
-</div>
-
-<div class="form-group">
-    <label for="repository">모드 리포지토리 링크 (선택)</label>
-    <input type="text" name="repository" id="repository">
-</div>
-
-<div class="form-group">
-    <label for="authorname">제작자 이름</label>
-    <input required type="text" name="authorname" id="authorname" value="<%= // TODO %>">
-</div>
-
-<div class="form-group">
-    <label for="version">모드 버전</label>
-    <input required type="text" name="version" id="version">
+<div id="form-align">
+    <div class="form-group">
+        <label for="download">모드 다운로드 링크</label>
+        <input required type="text" name="download" id="download">
+    </div>
+    
+    <div class="form-group no-form-margin">
+        <label for="repository">모드 리포지토리 링크 (선택)</label>
+        <input type="text" name="repository" id="repository">
+    </div>
 </div>
 
 <div class="form-group">

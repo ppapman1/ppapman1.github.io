@@ -12,6 +12,7 @@ const path = require('path');
 // Route
 const authRoute = require('./routes/auth');
 const modsPageRoute = require('./routes/modsPage');
+const managePageRoute = require('./routes/managePage');
 
 // DB
 db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err));
@@ -37,6 +38,7 @@ app.use(passport.session());
 
 app.use('/auth', authRoute);
 app.use('/mods', modsPageRoute);
+app.use('/mods/manage', managePageRoute);
 
 // Redirect from / to /mods (bcz i dont made "home" page yet)
 app.get('/', (req, res) => {
