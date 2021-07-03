@@ -1,6 +1,6 @@
 const DiscordStrategy = require('passport-discord').Strategy;
 const passport = require('passport');
-const DiscordUser = require('../models/DiscordUser')
+const DiscordUser = require('../models/DiscordUser');
 
 passport.serializeUser((user, done) => {
     done(null, user.discordId);
@@ -21,6 +21,7 @@ passport.use(new DiscordStrategy({
 }, async(accessToken, refreshToken, profile, done) => {
     try {
         const user = await DiscordUser.findOne({ discordId: profile.id });
+        console.log(profile);
         
         // TODO ★★★★ 절대 수정
         let isInModsGuild = false;
@@ -32,7 +33,6 @@ passport.use(new DiscordStrategy({
                 isInModsGuild = true;
             }
         }
-        // let isDeveloper
 
         if (user) {
             await DiscordUser.findOneAndUpdate(
@@ -40,7 +40,6 @@ passport.use(new DiscordStrategy({
                 { avatar: profile.avatar, username: profile.username, isInModsGuild: isInModsGuild, isDeveloper: isDeveloper },
                 (err, result) => {
                     if (!err) {
-                        console.log(result);
                         done(null, user);
                     } else {
                         done(err, null);

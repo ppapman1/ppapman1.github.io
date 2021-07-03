@@ -12,8 +12,8 @@ details {
 }
 
 details summary {
-    background: #4242616e;
-    color: #fff;
+    background: var(--side-section-bg-color);
+    color: var(--default-text-color);
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -30,8 +30,8 @@ details summary {
 #profile,
 #mods-status {
     width: calc(100% - 30px);
-    background-color: #4242616e;
-    color: white;
+    background-color: var(--side-section-bg-color);
+    color: var(--default-text-color);
     padding: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -91,14 +91,14 @@ article {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #474765;
+    background-color: var(--manage-article-bg-color);
     color: white;
     box-shadow: 2px 2px 6px 0 rgb(0 0 0 / 10%);
     transition: 0.2s;
 }
 
 article:hover {
-    background-color: #515170;
+    background-color: var(--manage-article-hover-bg-color);
 }
 
 .article-buttons {
@@ -111,7 +111,7 @@ article:hover {
 }
 
 .mod-version {
-    color: rgba(255, 255, 255, 0.486)
+    color: var(--translucent-text-color);
 }
 
 article .fas,
@@ -121,7 +121,7 @@ article .far {
     margin-left: 15px;
 }
 
-/* Add Mod (in main) */
+/* Add Mod Button (in main) */
 
 footer {
     width: 400px;
@@ -133,62 +133,109 @@ footer {
     position: fixed;
     display: flex;
     justify-content: center;
-    background-color: #3c3c57;
-    color: white;
+    background-color: var(--manage-footer-bg-color);
+    color: var(--default-text-color);
     box-shadow: #00000054 0 -4px 16px 0;
     transition: 0.2s;
 }
 
 footer:hover {
-    background-color: #474768;
+    background-color: var(--manage-footer-hover-bg-color);
 }
 
-#add-mod {
+#add-mod-button div {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#add-title {
-    margin-bottom: 10px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.5em;
+    justify-content: center;
+    font-size: 1.1em;
     font-weight: bold;
 }
 
-#add-mod input,
-#add-mod textarea,
-#add-mod select {
+
+/* Add Mod Section */
+
+#add-mod-section {
+    color: var(--default-text-color);
+}
+
+#add-title {
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.75em;
+    font-weight: bold;
+}
+
+/* Add Mod Form  */
+
+#add-mod-form {
+    width: 80%;
+}
+
+#add-mod-form hr {
+    background-color: var(--hr-color);
+}
+
+#add-mod-header {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+#add-mod-header h1 {
+    width: 187px;
+    margin: 0;
+}
+
+#add-mod-form label {
+    margin-bottom: 5px;
+}
+
+#add-mod-form input,
+#add-mod-form textarea,
+#add-mod-form select,
+#add-mod-form button {
     width: calc(100% - 10px);
     padding: 8px 5px;
     border-radius: 5px;
     border: 0;
     font-family: 'Noto Sans KR', sans-serif;
+    transition: 0.2s;
+    background-color: var(--manage-form-bg-color);
 }
 
-#add-mod select {
+#add-mod-form input:focus,
+#add-mod-form textarea:focus {
+    background: var(--manage-form-hover-bg-color);
+}
+
+#add-mod-form select {
     width: 100%;
 }
 
-#add-mod button {
+#add-mod-form button {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     margin-top: 10px;
     border-radius: 10px;
     border: none;
-    font-size: 1.25em;
+    font-size: 1.1em;
 }
 
-#add-mod textarea {
+#add-mod-form textarea {
     resize: none;
     height: 100px;
 }
 
-#add-mod form {
-    width: 80%;
+#header-align {
+    width: 187px;
+}
+
+.fieldwrapper {
+    display: flex;
 }
 
 #form-align {
@@ -213,10 +260,49 @@ footer:hover {
     flex-direction: column;
 }
 
-.on-open {
-    margin: auto;
-    width: 1000px;
-    padding-bottom: 30px;
+/* Loading Scene */
+
+#loading-scene {
+    align-content: center;
+}
+
+/* Hide/Show Main */
+
+@keyframes hide-main {
+    from {
+        height: calc(100% - 70px);
+        opacity: 100%;
+        visibility: visible;
+        
+    }
+    to  {
+        opacity: 0%;
+        height: 0;
+    }
+}
+
+@keyframes show-main {
+    from {
+        opacity: 0%;
+        height: 0;
+    }
+    to {
+        height: calc(100% - 70px);
+        opacity: 100%;
+        visibility: visible;
+    }
+}
+
+.hide-animation {
+    animation-name: hide-main;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.show-animation {
+    animation-name: show-main;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
 .hide {

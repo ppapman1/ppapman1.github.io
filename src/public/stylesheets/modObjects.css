@@ -1,14 +1,6 @@
 /* Mod article styles are saved in this stylesheet */
 
 
-/* Do not change cursor style and show selection */
-
-.no-drag {
-    cursor: default;
-    user-select: none;
-}
-
-
 /* Mod article styles */
 
 .mod {
@@ -46,19 +38,30 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 18px;
-    width: calc(300px - 54px);
     overflow: hidden;
     text-overflow: ellipsis;
     height: 40px;
 }
 
-.mod-download {
+.mod-download-icon {
     padding: 15px;
     transition-duration: 0.2s;
+    font-size: 1.2em;
+    position: relative;
 }
 
-.mod-download:hover {
+.mod-download-icon:hover {
     transform: scale(1.1);
+}
+
+.support-version {
+    position: absolute;
+    text-shadow: -1px -1px 0 #767695, 1px -1px 0 #767695, -1px 1px 0 #767695, 1px 1px 0 #767695;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: #767695 0.6px;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.6em;
 }
 
 .mod-version {
@@ -70,6 +73,8 @@
 
 .mod-feature {
     padding-top: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .mod-footer {

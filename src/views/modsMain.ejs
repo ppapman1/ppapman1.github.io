@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="theme-comet">
     <head>
         <!-- Metadata -->
         <meta charset="UTF-8">
@@ -16,22 +16,21 @@
         <link rel="icon" href="https://cdn.discordapp.com/icons/783482345373040650/fd95f05ba149fd271a405d7e126224f6.png?size=256">
 
         <!-- Custom Stylesheets -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/modObjects.css">
+        <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+        <link rel="stylesheet" type="text/css" href="../stylesheets/modObjects.css">
 
         <!-- Scripts -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/af07626cc9.js" crossorigin="anonymous"></script>
 
-        <script src="scripts/modsMain.js"></script>
+        <script src="../scripts/modsMain.js"></script>
+        <script src="../scripts/mobileHandler.js"></script>
     </head>
 
     <body>
         <!-- Header to display on top -->
         <header class="no-drag">
-            <h1 id='title'><i class="fas fa-cube fa-1x" aria-hidden="true"></i>Mods</h1>
-
             <!-- Search bar -->
             <div id="search-bar">
                 <input type="search" id="search" onkeyup="modSearch()" placeholder="찾고픈 모드의 이름을 검색해보세요">
@@ -40,15 +39,20 @@
 
         <!-- Side Bar -->
         <side>
-            <div id="search-mode">
-                <div>
-                    <input name="search-mode" type="radio" id="title-mode" onchange="modSearch();changePlaceholder()" checked>
-                    <label for="title-mode">모드 이름으로 검색</label>
-                </div>
-
-                <div>
-                    <input name="search-mode" type="radio" id="feature-mode" onchange="modSearch();changePlaceholder()">
-                    <label for="feature-mode">모드 기능으로 검색</label>
+            <div>
+                <h1 id='title' class="no-drag">
+                    <i class="fas fa-cube fa-1x" aria-hidden="true"></i>Mods
+                </h1>
+                <div id="search-mode">
+                    <div>
+                        <input name="search-mode" type="radio" id="title-mode" onchange="modSearch();changePlaceholder()" checked>
+                        <label for="title-mode">모드 이름으로 검색</label>
+                    </div>
+    
+                    <div>
+                        <input name="search-mode" type="radio" id="feature-mode" onchange="modSearch();changePlaceholder()">
+                        <label for="feature-mode">모드 기능으로 검색</label>
+                    </div>
                 </div>
             </div>
 
@@ -97,13 +101,27 @@
             <% articles.forEach(article => { %>
                 <article class="mod" id="<%= article.id %>">
                     <div class="mod-title">
-                        <a href="#">
+                        <a href="/mods/articles/<%= article.id %>">
                             <div class="mod-name"><%= article.name %></div>
                         </a>
 
-                        <a href="<%= article.downloadLink %>">
-                            <i class="fas fa-download mod-download"></i>
-                        </a>
+                        <div class="download">
+                            <% if (article.supportVersion.length == 1) { %>
+                                <a href="<%= article.downloadLink %>">
+                            <% } else { %>
+                                <a class="cursor-pointer" onclick="openDownloadSelect(`<%= JSON.stringify(article.supportVersion) %>`, `<%= JSON.stringify(article.downloadLink) %>`)">
+                            <% } %>
+                                <i class="fas fa-download mod-download-icon">
+                                    <div class="support-version">
+                                        <% if (article.supportVersion.length == 1) { %>
+                                            <%= article.supportVersion[0] %>
+                                        <% } else { %>
+                                            여럿
+                                        <% } %>
+                                    </div>
+                                </i>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="mod-feature"><%= article.briefFeatures %></div>
@@ -116,7 +134,7 @@
                                 <div class="mod-category"><i class="fas fa-link"></i><%= article.category %></div>
                                 <div class="mod-author"><i class="fas fa-user-circle"></i><%= article.authorName %></div>
                             </div>
-                            <a href="#" class="black">
+                            <a href="/mods/articles/<%= article.id %>" class="black">
                                 <div class="mod-more">자세히 보기</div>
                             </a>
                         </div>

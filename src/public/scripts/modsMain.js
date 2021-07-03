@@ -1,20 +1,6 @@
 // Script for modsMain.ejs
 
 $(document).ready(function() {
-    // When Connected to a Mobile Device
-    if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.body.innerHTML = '';
-
-        swal({
-            icon: 'error',
-            title: '잠시만요!',
-            text: '아마 모바일 기기로 접속한 것 같아요. 데스크톱 버전의 A Dance of Fire and Ice에만 모드를 적용할 수 있어요.',
-            button: false,
-            closeOnClickOutside: false
-        });
-
-    }
-
     if ($('#username')[0]) {
         window.discordName = $('#username')[0].innerText;
     }
@@ -92,6 +78,25 @@ function changePlaceholder() {
     } else {
         searchBar.placeholder = '찾고픈 모드의 기능을 검색해보세요';
     }
+}
+
+function openDownloadSelect(supportVersion, downloadLink) {
+    const supportVersionArray = JSON.parse(supportVersion);
+    const downloadLinkArray = JSON.parse(downloadLink);
+    let swalButtons = {};
+
+    for (let i = 0; i < supportVersionArray.length; i++) {
+        let _obj = {};
+        _obj[i] = 'r' + supportVersionArray[i]
+
+        swalButtons = Object.assign(_obj, swalButtons);
+    }
+
+    swal("이 모드는 여러 버전을 지원해요. 자신이 사용하고 있는 게임의 버전에 맞춰 다운로드 해 주세요.", {
+        buttons: swalButtons
+    }).then((resultNum) => {
+        open(downloadLinkArray[resultNum]);
+    });
 }
 
 function logoutButtonOver() {

@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 const session = require('express-session');
 const passport = require('passport');
 const discordStrategy = require('./strategies/discordStrategy');
-const db = require('./database/authDB');
+const db = require('./database/database');
 const path = require('path');
 
 // Route

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="theme-comet">
     <head>
         <!-- Metadata -->
         <meta charset="UTF-8">
@@ -25,12 +25,12 @@
         <script src="https://kit.fontawesome.com/af07626cc9.js" crossorigin="anonymous"></script>
 
         <script src="../scripts/manageMain.js"></script>
+        <script src="../scripts/mobileHandler.js"></script>
     </head>
 
     <body>
         <!-- Header to display on top -->
         <header class="no-drag">
-            <h1 id='title'><i class="fas fa-cube fa-1x" aria-hidden="true"></i>Mods</h1>
 
             <!-- Search bar -->
             <div id="search-bar">
@@ -40,28 +40,32 @@
 
         <!-- Side Bar -->
         <side>
-            <div id="side-header">
-                <div id="profile">
-                    <!-- Avatar -->
-                    <% if (user.avatar === null) { %>
-                        <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="당신의 디스코드 아바타" id="avatar">
-                    <% } else { %>
-                        <img src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>.png" alt="당신의 디스코드 아바타" id="avatar">
-                    <% } %>
-
-                    <!-- Name/ID -->
-                    <span id="username"><%= user.username %></span>
-                    <span id="discord-id"><%= user.discordId %></span>
-                </div>
-
-                <details>
-                    <summary>통계 보기</summary>
-                    <div id="mods-status">
-                        당신의 모드 개수
-                        <span id="mod-amount">총 <%= mods.length %> 개</span>
+            <div>
+                <h1 id='title' class="no-drag">
+                    <i class="fas fa-cube fa-1x" aria-hidden="true"></i>Mods
+                </h1>
+                <div id="side-header">
+                    <div id="profile">
+                        <!-- Avatar -->
+                        <% if (user.avatar === null) { %>
+                            <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="당신의 디스코드 아바타" id="avatar">
+                        <% } else { %>
+                            <img src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>.png" alt="당신의 디스코드 아바타" id="avatar">
+                        <% } %>
+    
+                        <!-- Name/ID -->
+                        <span id="username"><%= user.username %></span>
+                        <span id="discord-id"><%= user.discordId %></span>
                     </div>
-                </details>
-
+    
+                    <details>
+                        <summary>통계 보기</summary>
+                        <div id="mods-status">
+                            당신의 모드 개수
+                            <span id="mod-amount">총 <%= mods.length %> 개</span>
+                        </div>
+                    </details>
+                </div>
             </div>
 
             <!-- Buttons (in sidebar) -->
@@ -75,13 +79,18 @@
 
                 <!-- Go back -->
                 <a href="/mods" id='go-back'>
-                    <div class="circle"><i class="fas fa-undo-alt"></i>뒤로 가기</div>
+                    <div class="circle"><i class="fas fa-home"></i>메인 화면으로 가기</div>
                 </a>
             </div>
         </side>
 
+        <!-- Loading Scene -->
+        <main id="loading-scene">
+            <div class="loader"></div>
+        </main>
+
         <!-- List of articles -->
-        <main id="articles">
+        <main id="mod-articles" class="show-animation hide">
             <% mods.forEach(mod => { %>
                 <article class="mod" id="<%= mod.id %>">
                     <a href="#">
@@ -98,14 +107,28 @@
                 </article>
             <% }) %>
 
-            <footer id="add-mod-section">
-                <div id="add-mod">
-                    <div id="add-title" onclick="openAddModSection()">모드 추가하기</div>
-                    <form action="/mods/manage/add" method="POST" id="add-mod-form" class="hide">
-                        <%- include('_form_fields') %>
-                    </form>
-                </a>
+            <footer id="add-mod-button" class="cursor-pointer">
+                <div onclick="toggleAddModSection()">모드 추가하기</div>
             </footer>
+        </main>
+
+        <!-- Add Mod Section -->
+        <main id="add-mod-section" class="hide-animation">
+            <div id="add-mod-header">
+                <div class="circle cursor-pointer" onclick="toggleAddModSection()">
+                    <i class="fas fa-arrow-left"></i>
+                    돌아가기
+                </div>
+
+                <h1>모드 추가하기</h1>
+
+                <!-- No Content Div for Align -->
+                <div id="header-align"></div>
+            </div>
+            
+            <form action="/mods/manage/add" method="POST" id="add-mod-form">
+                <%- include('partials/_form_fields') %>
+            </form>
         </main>
     </body>
 </html>

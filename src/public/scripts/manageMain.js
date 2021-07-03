@@ -1,23 +1,69 @@
+// Script for manageMain.ejs
+
 $(document).ready(function() {
-    // When Connected to a Mobile Device
-    if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.body.innerHTML = '';
-
-        swal({
-            icon: 'error',
-            title: '잠시만요!',
-            text: '아마 모바일 기기로 접속한 것 같아요. 죄송하지만, 이 사이트는 모바일 기기를 지원하지 않아요.',
-            button: false,
-            closeOnClickOutside: false
-        });
-    }
-
+    // Delete Button of Mod Articles
     const deleteButtons = document.getElementsByClassName('mod-delete');
 
     for (let element of deleteButtons) {
         element.addEventListener('click', deleteMod);
     }
+
+    // Hide Loading Scene
+    hideLoader();
+
+    // Add/Remove Input Fields
+    $("#field-add").click(() => {
+        const lastField = $("#support-mod-field div:last");
+        const intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
+        const fieldWrapper = $(`<div class="fieldwrapper" id="field${intId}">`);
+
+        fieldWrapper.data("idx", intId);
+
+        const versionInput = $(
+            `<input type="text" class="fieldname version-field"
+            id="version${intId}" name="supportversion[${intId}]" pattern="(\\d{2,3})(\\s(\\d{2,3}))*"
+            title="지원하는 게임의 버전을 r을 빼고 적어주세요. 두 개 이상이라면 띄어쓰기로 나누어 주세요. (예시: 71 또는 68 75)">`
+        );
+
+        const downloadLinkInput = $(
+            `<input type="text" class="fieldname" 
+            id="download${intId}" name="downloadlink[${intId}]" pattern="(http|https|ftp|telnet|news|mms)?:\\/\\/.+"
+            title="주소를 입력해 주세요.">`
+        );
+        const removeButton = $('<input type="button" class="remove" value="지우기">');
+
+        fieldWrapper.append(versionInput);
+        fieldWrapper.append(downloadLinkInput);
+        fieldWrapper.append(removeButton);
+
+        $("#support-mod-field").append(fieldWrapper);
+
+        removeButton.click(() => {
+            $(this).parent().remove();
+        });
+
+        $('.version-field').keyup((event) => {
+            const target = $("#" + event.target.id);
+
+            if (target.val().includes(' ') === true) {
+                target.val(target.val().replace(' ', ''));
+            }
+        });
+    });
 });
+
+function hideLoader() {
+    const loader = document.getElementById("loading-scene");
+    const modArticles = document.getElementById("mod-articles");
+    
+    modArticles.classList.toggle("hide");
+    scroll(0, 0);
+
+    setTimeout(() => {
+        loader.classList.toggle("hide-animation");
+    }, 550);
+}
+
 
 // Mod Search
 function modSearch() {
@@ -51,12 +97,15 @@ function modSearch() {
     }
 }
 
-function openAddModSection() {
+function toggleAddModSection() {
+    const modArticles = document.getElementById("mod-articles");
     const addModSection = document.getElementById("add-mod-section");
-    const addModForm = document.getElementById("add-mod-form");
 
-    addModForm.classList.toggle("hide");
-    addModSection.classList.toggle("on-open");
+    modArticles.classList.toggle("hide-animation");
+    modArticles.classList.toggle("show-animation");
+
+    addModSection.classList.toggle("hide-animation");
+    addModSection.classList.toggle("show-animation");
 }
 
 // Click "Delete Mod Button" Event Handler

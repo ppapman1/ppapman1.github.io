@@ -22,13 +22,16 @@ function isAuthorized(req, res, next) {
 router.get('/', isAuthorized, async(req, res) => {
     const myMods = await ModArticle.find({ authorID: req.user.id });
 
-    res.render('modsManage/manageMain', {
+    res.render('manageMain', {
         user: req.user,
         mods: myMods
     });
 });
 
 router.post('/add', isAuthorized, async (req, res) => {
+    // TODO 다운로드링크 / 서포트 버전
+    console.log('aaa');
+    console.log(req.body);
     // TODO 리다이렉트
     // TODO 이미 동일한 이름의 모드가 있다면: 리젝트
     if (!req.body.name) {
@@ -37,11 +40,12 @@ router.post('/add', isAuthorized, async (req, res) => {
 
     const newArticle = new ModArticle({
         name:           req.body.name,
-        downloadLink:   req.body.download,
+        downloadLink:   req.body.downloadlink,
         repositoryLink: req.body.repository,
         authorName:     req.body.authorname,
         authorID:       req.user.id,
         version:        req.body.version,
+        supportVersion: req.body.supportversion,
         briefFeatures:  req.body.breiffeature,
         allFeatrues:    req.body.allfeature,
         dependencyMods: req.body.dependencymods,

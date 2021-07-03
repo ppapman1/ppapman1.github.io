@@ -11,8 +11,12 @@ router.get('/', async (req, res) => {
     });
 });
 
-// router.get('/articles/:id', (req, res) => {
-//     res.render('modsManage');
-// });
+router.get('/articles/:id', async (req, res) => {
+    const article = await ModArticle.findById(req.params.id);
+    if (article == null) {
+        res.redirect('/mods');
+    }
+    res.send(`미완성! `);
+});
 
 module.exports = router;
