@@ -1,7 +1,5 @@
 # A Dance of Fire and Ice Mods
 
-# A Dance of Fire and Ice Mods
-
 ## KOREAN 중요 공지
 
 이 리포지토리에 기여하지 마세요!
