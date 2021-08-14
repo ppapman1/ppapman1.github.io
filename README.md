@@ -1,40 +1,19 @@
 # A Dance of Fire and Ice Mods
 
-## KOR
+# A Dance of Fire and Ice Mods
 
-이 사이트는 아직 작업 중에 있습니다!
+## KOREAN 중요 공지
 
-사전 지식이 전혀 없는 상태에서의 생애 처음의 JavaScript로 이루어진 프로젝트기 때문에 코드가 매우 스파게티처럼 이루어져 있어요.
+이 리포지토리에 기여하지 마세요!
 
-만약 기여하실 의향이 있다면, Pull Request로 올려주세요. 확인해 보겠습니다.
+코드들에 심각한 보안 문제들과 각종 결함들이 발견되었으며, 저는 더 나은 프로젝트를 만들기 위해 이 리포지토리를 버렸습니다.
 
-### 필요한 것
+만약 모드들을 정리하고, 관리하는 웹 사이트를 만드는 데 관심이 있으시다면, 제가 다른 사람들과 공동작업하고 있는 리포지토리를 확인해 주세요. 
 
-- MongoDB
-- .env 파일
-	```
-	PORT=3000
-	CLIENT_ID=이곳의 Discord 어플리케이션의 클라이언트 ID를 넣어주세요
-	CLIENT_SECRET=이곳의 Discord 어플리케이션의 클라이언트 시크릿을 넣어주세요
-	CLIENT_REDIRECT=auth/redirect
-	```
+## ENGLISH Important Announcement
 
-## ENG
+Don't contribute to this repository!
 
-This site is not yet complete!
+We found severe security issues and numerous flaws in this project and abandoned this repository to create a better project.
 
-The code is very spaghetti-like bcz it is the first JavaScript project in my life without any prior knowledge.
-
-If you are willing to contribute, please post it as a pull request. I'll check.
-
-
-### Requirements
-
-- MongoDB
-- .env File
-	```
-	PORT=3000
-	CLIENT_ID=PLEASE PUT IN THE CLIENT ID OF DISCORD APPLICATION
-	CLIENT_SECRET=PLEASE PUT IN THE CLIENT SECRET OF DISCORD APPLICATION
-	CLIENT_REDIRECT=auth/redirect
-	```
+If you are interested in creating a website that organizes and manages modes, please check the repository I am working with other people.
